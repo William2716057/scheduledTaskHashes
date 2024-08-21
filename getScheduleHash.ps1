@@ -1,3 +1,5 @@
+Get-ScheduledTask | Format-Table Taskname, State, LastRunTime | Out-File "resultList.txt"
+
 Get-ScheduledTask | ForEach-Object {
     $task = $_
     $actions = $task.Actions.Execute
@@ -12,4 +14,4 @@ Get-ScheduledTask | ForEach-Object {
         LastRunTime  = $task.LastRunTime
         FileHash     = $hash
     }
-} | Export-Csv -Path "results.csv" -NoTypeInformation
+} | Export-Csv -Path "HashList.csv" -NoTypeInformation
